@@ -7,9 +7,16 @@ from ultralytics import YOLO
 # Load the YOLO v8 model (e.g., pre-trained on the COCO dataset)
 model = YOLO('yolov8n.pt')  # Using the nano model for better speed
 
+# the following lines used if we want to train the model ourself 
+# model.train(
+#   data='path/to/your/dataset.yaml',  # Path to the dataset YAML file containing training configuration
+#   epochs=50,  # Number of epochs for training
+#    imgsz=640,  # Image size
+#    batch=8  # Batch size
+#)
+
+
 # Define a function to run YOLO on an image or video frame
-
-
 def detect_objects(frame):
     results = model(frame)  # Perform detection
     for result in results:  # Process each detection
