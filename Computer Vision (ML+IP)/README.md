@@ -24,4 +24,4 @@
 
 **flowchart (until now)**
 
-(https://github.com/user-attachments/assets/7ed908ce-1780-4edc-84f2-783abb236b8b)
+![flowchart](https://github.com/user-attachments/assets/4eb1c243-e7e8-43f9-ae90-29f02ac28dce)
