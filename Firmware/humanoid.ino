@@ -22,6 +22,9 @@ ros::Subscriber<std_msgs::String> sub("motion_command", &commandCallback);
 void moveForward();
 void moveRight();
 void moveLeft();
+void moveReverse();
+void turnRight();
+void turnLeft();
 void stopMovement();
 
 void setup() {
@@ -69,6 +72,9 @@ void commandCallback(const std_msgs::String &msg) {
     } else if (command == "MOVE_LEFT") {
         isMoving = true;
         moveLeft();
+    } else if (command == "MOVE_REVERSE") {
+        isMoving = true;
+        moveReverse();  // Trigger reverse movement
     } else if (command == "STOP") {
         isMoving = true;
         stopMovement();
@@ -105,6 +111,33 @@ void moveLeft() {
     leg2.write(90);  // Keep leg2 neutral
     delay(1000);     // Wait for 1 second to complete movement
     stopMovement();  // Stop after turning left
+}
+
+void moveReverse() {
+    // Reverse the robot by turning it right multiple times (90 degrees each turn)
+    turnRight();
+    delay(500);  // Wait for half a second before the next turn
+    turnRight();  // Turn the robot right again to reverse its direction
+    delay(500);  // Wait before stopping
+    stopMovement();  // Stop after turning twice to face the opposite direction
+}
+
+void turnRight() {
+    // Simulate a right turn by moving legs and arms
+    arm1.write(90);  // Keep arm1 neutral
+    arm2.write(90);  // Keep arm2 neutral
+    leg1.write(120); // Turn leg1 (right)
+    leg2.write(90);  // Keep leg2 neutral
+    delay(1000);     // Wait for the turn to finish
+}
+
+void turnLeft() {
+    // Simulate a left turn by moving legs and arms
+    arm1.write(90);  // Keep arm1 neutral
+    arm2.write(90);  // Keep arm2 neutral
+    leg1.write(60);  // Turn leg1 (left)
+    leg2.write(90);  // Keep leg2 neutral
+    delay(1000);     // Wait for the turn to finish
 }
 
 void stopMovement() {
