@@ -1,6 +1,8 @@
 ###  integrating the voice recognition with chatbot and yolo image processing
 
 
+# MAIN
+
 
 import cv2
 import numpy as np
@@ -12,7 +14,7 @@ import pyttsx3
 import random
 import json
 from transformers import AutoModelForCausalLM,AutoTokenizer
-from yolo_test import ObjectDetector,  InvalidTarget
+from lucas_test import ObjectDetector,  InvalidTarget
 
 # vosk
 model =vosk.Model("vosk-model-small-en-us-0.15")
