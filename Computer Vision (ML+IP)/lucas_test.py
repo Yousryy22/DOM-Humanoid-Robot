@@ -60,6 +60,10 @@ class ObjectDetector:
                     new_tracking_points.append((obj_center_x, obj_center_y))
                     cv2.circle(frame, (obj_center_x, obj_center_y), 5, (0, 0, 255), -1)
 
+                    #movement command is published to ros to be adjusted on object and move forward until ultrasonic detect object is close,
+                    #the robot arm is then adjusted on the object and robot should then rotate 180 degree and repet the motion commands to return
+                    #back to start point
+
                     if obj_center_x < center_x - 25:
                         movement_command = "moving left"
                     elif obj_center_x > center_x + 25:
