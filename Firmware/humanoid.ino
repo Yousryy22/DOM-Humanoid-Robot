@@ -16,9 +16,8 @@ bool isMoving = false;  // Flag to ensure one movement happens at a time
 
 void commandCallback(const std_msgs::String &msg);
 
-ros::Subscriber<std_msgs::String> sub("motion_command", &commandCallback);
+ros::Subscriber<std_msgs::String> sub("servo_motion", &commandCallback);
 
-// Movement functions
 void moveForward();
 void moveRight();
 void moveLeft();
@@ -63,19 +62,19 @@ void commandCallback(const std_msgs::String &msg) {
     }
 
     // Handle incoming commands and execute corresponding actions
-    if (command == "MOVE_FORWARD") {
+    if (command == "forward") {
         isMoving = true;  // Set flag to indicate movement is happening
         moveForward();
-    } else if (command == "MOVE_RIGHT") {
+    } else if (command == "right") {
         isMoving = true;
         moveRight();
-    } else if (command == "MOVE_LEFT") {
+    } else if (command == "left") {
         isMoving = true;
         moveLeft();
-    } else if (command == "MOVE_REVERSE") {
+    } else if (command == "reverse") {
         isMoving = true;
         moveReverse();  // Trigger reverse movement
-    } else if (command == "STOP") {
+    } else if (command == "stop") {
         isMoving = true;
         stopMovement();
     }
