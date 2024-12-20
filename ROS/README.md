@@ -1,4 +1,7 @@
-Tasks:
+terminal1:
+roscore
 
-Updates:
+terminal2:
+python3 ~/catkin_ws/src/servo_motion/src/lucas_test.py
+
  
