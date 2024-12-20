@@ -1,0 +1,2 @@
+my_package:servo_motion
+-DCATKIN_DEVEL_PREFIX=/home/yousry/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/yousry/catkin_ws/install -G Unix Makefiles
