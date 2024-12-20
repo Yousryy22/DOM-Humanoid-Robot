@@ -1,9 +1,15 @@
+#!/usr/bin/env python3
+
 from ultralytics import YOLO
 import cv2
 import numpy as np
+import rospy
+from std_msgs.msg import String 
+
 
 class InvalidTarget(Exception):
     pass
+
 
 class ObjectDetector:
     def __init__(self, model_path='yolov8n.pt', target_object=None):
@@ -16,10 +22,14 @@ class ObjectDetector:
                 f"error: {self.target_object} can't be detected"
             )
 
-        # Lucas parameters
-        self.lk_params = dict(winSize=(15, 15), maxLevel=2, criteria=(cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 0.03))
+        #lucas parameters
+        self.lk_params = dict(winSize=(15, 15), maxLevel=2,
+                              criteria=(cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 0.03))
         self.tracking_points = []
         self.prev_gray = None
+
+        # Initialize ROS publisher
+        self.pub = rospy.Publisher('servo_motion', String, queue_size=10)
 
     def set_target_object(self, target_object):
         self.target_object = target_object.lower()
@@ -55,22 +65,22 @@ class ObjectDetector:
                     cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
                     cv2.putText(frame, display_label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
 
-                    #center point of the object
+                    # center point of the object
                     obj_center_x, obj_center_y = (x1 + x2) // 2, (y1 + y2) // 2
                     new_tracking_points.append((obj_center_x, obj_center_y))
                     cv2.circle(frame, (obj_center_x, obj_center_y), 5, (0, 0, 255), -1)
 
-                    #movement command is published to ros to be adjusted on object and move forward until ultrasonic detect object is close,
-                    #the robot arm is then adjusted on the object and robot should then rotate 180 degree and repet the motion commands to return
-                    #back to start point
-
+                    # Determine movement command
                     if obj_center_x < center_x - 25:
-                        movement_command = "moving left"
+                        movement_command = "left"
                     elif obj_center_x > center_x + 25:
-                        movement_command = "moving right"
-                    else:  #adjusted
-                        movement_command = "moving forward"
-                    print(movement_command)
+                        movement_command = "right"
+                    else:  # adjusted
+                        movement_command = "forward"
+
+                    # Publish the movement command to ROS
+                    self.pub.publish(movement_command)
+                    print(f"published command: {movement_command}")
                     cv2.putText(frame, movement_command, (10, height - 50), cv2.FONT_HERSHEY_SIMPLEX, 0.7,
                                 (0, 255, 255), 2)
 
@@ -82,10 +92,12 @@ class ObjectDetector:
 
     def start_video_capture(self):
         if not self.target_object:
-            print("No objects to detect")
+            print("no objects to detect")
             return
 
         cap = cv2.VideoCapture(0)
+
+        rospy.init_node('object_detector_node', anonymous=True)
 
         while cap.isOpened():
             ret, frame = cap.read()
@@ -101,6 +113,6 @@ class ObjectDetector:
         cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    target_object = input("Enter object to detect: ").strip()
+    target_object = input("enter object to detect: ").strip()
     detector = ObjectDetector(target_object=target_object)
     detector.start_video_capture()
