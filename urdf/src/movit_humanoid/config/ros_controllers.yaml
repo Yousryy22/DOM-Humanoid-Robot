@@ -1,0 +1,41 @@
+# ros_controllers.yaml
+
+# Define the controllers for the robot
+controller_manager:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  left_leg_controller:
+    type: control_msgs/FollowJointTrajectoryController
+    joints:
+      - joint_left_leg_1
+      - joint_left_leg_2
+      - joint_left_leg_3
+      - joint_left_leg_4
+    pid: {p: 100.0, i: 0.01, d: 10.0, i_max: 1.0}
+
+  right_leg_controller:
+    type: control_msgs/FollowJointTrajectoryController
+    joints:
+      - joint_right_leg_1
+      - joint_right_leg_2
+      - joint_right_leg_3
+      - joint_right_leg_4
+    pid: {p: 100.0, i: 0.01, d: 10.0, i_max: 1.0}
+
+  left_arm_controller:
+    type: control_msgs/FollowJointTrajectoryController
+    joints:
+      - joint_left_arm_1
+      - joint_left_arm_2
+      - joint_left_arm_3
+    pid: {p: 100.0, i: 0.01, d: 10.0, i_max: 1.0}
+
+  right_arm_controller:
+    type: control_msgs/FollowJointTrajectoryController
+    joints:
+      - joint_right_arm_1
+      - joint_right_arm_2
+      - joint_right_arm_3
+    pid: {p: 100.0, i: 0.01, d: 10.0, i_max: 1.0}

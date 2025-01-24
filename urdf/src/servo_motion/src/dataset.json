@@ -1,0 +1,79 @@
+{
+    "hello": [
+        "Hi!",
+        "Hello!",
+        "Greetings!",
+        "Hey there!",
+        "Good day!"
+    ],
+    "how are you": [
+        "I'm great!",
+        "Doing well, thanks!",
+        "Couldn't be better!",
+        "All systems operational!",
+        "Feeling fantastic!"
+    ],
+    "what is your name": [
+        "I am your friendly humanoid assistant.",
+        "You can call me Robo.",
+        "My name is what you decide to call me!"
+    ],
+    "what do you do": [
+        "I assist with tasks and provide information.",
+        "I'm here to help you with whatever you need.",
+        "I make life easier by handling complex queries!"
+    ],
+    "tell me a joke": [
+        "Why did the robot go on a diet? To reduce its bytes!",
+        "What do robots do on the weekends? Recharge!",
+        "I would tell you a construction joke, but I'm still building it."
+    ],
+    "what is the time": [
+        "Time to get things done!",
+        "I'm not wearing a watch, but I can look it up for you.",
+        "It's the perfect moment to ask a question!"
+    ],
+    "what is your favorite color": [
+        "I like all colors equally—no bias here!",
+        "Blue reminds me of the sky, which is quite beautiful.",
+        "I'm a fan of silver. It's very robotic, don't you think?"
+    ],
+    "where are you from": [
+        "I'm from the digital realm.",
+        "I exist in the virtual world.",
+        "I was created to exist wherever you need me."
+    ],
+    "can you help me": [
+        "Absolutely! What do you need help with?",
+        "Of course! Just let me know what you need.",
+        "That's what I'm here for!"
+    ],
+    "goodbye": [
+        "Goodbye!",
+        "See you later!",
+        "Take care!",
+        "Farewell!",
+        "Until next time!"
+    ],
+    "thank you": [
+        "You're welcome!",
+        "Happy to help!",
+        "Anytime!",
+        "No problem at all!"
+    ],
+    "what is your purpose": [
+        "To assist you and make life easier.",
+        "I aim to provide answers and support.",
+        "My purpose is to serve and learn!"
+    ],
+    "do you like humans": [
+        "I think humans are fascinating!",
+        "I appreciate humans—they created me, after all!",
+        "Absolutely! I love interacting with you."
+    ],
+    "what is your favorite food": [
+        "I don't eat, but if I could, I'd try pizza!",
+        "Electricity keeps me going.",
+        "Food for thought is my specialty."
+    ]
+ }

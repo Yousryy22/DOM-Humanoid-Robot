@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<world name="default">
+  <!-- Add ground plane -->
+  <model name="ground_plane">
+    <pose>0 0 0 0 0 0</pose> <!-- Position and orientation -->
+    <link name="link">
+      <collision>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>10 10</size> <!-- Ground size -->
+          </plane>
+        </geometry>
+      </collision>
+      <visual>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+            <size>10 10</size> <!-- Ground size -->
+          </plane>
+        </geometry>
+        <material>
+          <ambient>0.5 0.5 0.5 1</ambient> <!-- Grey color -->
+          <diffuse>0.5 0.5 0.5 1</diffuse>
+        </material>
+      </visual>
+    </link>
+  </model>
+
+  <!-- Add a simple light source -->
+  <light name="sun" type="directional">
+    <pose>0 0 10 0 0 0</pose> <!-- Position and orientation -->
+    <diffuse>1 1 1 1</diffuse> <!-- White light -->
+    <specular>1 1 1 1</specular> <!-- White specular -->
+    <attenuation>
+      <range>100</range>
+      <constant>0.1</constant>
+      <linear>0.01</linear>
+      <quadratic>0.001</quadratic>
+    </attenuation>
+  </light>
+
+  <!-- Optionally, add other models or elements here -->
+</world>

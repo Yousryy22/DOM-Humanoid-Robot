@@ -1,0 +1,18 @@
+<launch>
+  <!-- URDF processing (xacro for dynamic processing) -->
+  <param name="robot_description" command="$(find xacro)/xacro $(find body_urdf_files)/urdf/body_urdf_files_gazebo_new.urdf" />
+
+  <!-- Joint state publisher for controlling the robot joints -->
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+
+  <!-- Robot state publisher for publishing transforms -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <!-- Static transform publisher from base_link to map -->
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_map" args="0 0 0 0 0 0 map base_link 100" />
+
+  <!-- Start RViz with a specific configuration file -->
+  <!-- Update the RViz config path with the correct file name or remove the args line to use the default config -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find body_urdf_files)/urdf/your_custom_config.rviz" />
+</launch>
+

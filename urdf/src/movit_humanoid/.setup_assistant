@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: body_urdf_files
+    relative_path: urdf/body_urdf_files_gazebo_new.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/body_urdf_files.srdf
+  CONFIG:
+    author_name: Perry
+    author_email: perry@email.com
+    generated_timestamp: 1734132224

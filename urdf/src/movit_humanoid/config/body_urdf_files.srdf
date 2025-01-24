@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="body_urdf_files">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="left_leg">
+        <joint name="joint_left_leg_1"/>
+        <joint name="joint_left_leg_2"/>
+        <joint name="joint_left_leg_3"/>
+        <joint name="joint_left_leg_4"/>
+    </group>
+    <group name="right_leg">
+        <joint name="joint_right_leg_1"/>
+        <joint name="joint_right_leg_2"/>
+        <joint name="joint_right_leg_3"/>
+        <joint name="joint_right_leg_4"/>
+    </group>
+    <group name="left_arm">
+        <joint name="joint_left_arm_1"/>
+        <joint name="joint_left_arm_2"/>
+        <joint name="joint_left_arm_3"/>
+    </group>
+    <group name="right_arm">
+        <joint name="joint_right_arm_2"/>
+        <joint name="joint_right_arm_1"/>
+        <joint name="joint_right_arm_3"/>
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="left_leg_rest" group="left_leg">
+        <joint name="joint_left_leg_1" value="0"/>
+        <joint name="joint_left_leg_2" value="-0.2479"/>
+        <joint name="joint_left_leg_3" value="0.1948"/>
+        <joint name="joint_left_leg_4" value="-0.0177"/>
+    </group_state>
+    <group_state name="left_leg_up" group="left_leg">
+        <joint name="joint_left_leg_1" value="0"/>
+        <joint name="joint_left_leg_2" value="0.4109"/>
+        <joint name="joint_left_leg_3" value="-0.3477"/>
+        <joint name="joint_left_leg_4" value="0.1159"/>
+    </group_state>
+    <group_state name="right_leg_rest" group="right_leg">
+        <joint name="joint_right_leg_1" value="-0.2002"/>
+        <joint name="joint_right_leg_2" value="0.0105"/>
+        <joint name="joint_right_leg_3" value="-0.4375"/>
+        <joint name="joint_right_leg_4" value="0.3688"/>
+    </group_state>
+    <group_state name="right_leg_up" group="right_leg">
+        <joint name="joint_right_leg_1" value="-0.2002"/>
+        <joint name="joint_right_leg_2" value="0.6217"/>
+        <joint name="joint_right_leg_3" value="-0.9589"/>
+        <joint name="joint_right_leg_4" value="0.3056"/>
+    </group_state>
+    <group_state name="left_arm_up" group="left_arm">
+        <joint name="joint_left_arm_1" value="-0.3056"/>
+        <joint name="joint_left_arm_2" value="0"/>
+        <joint name="joint_left_arm_3" value="0"/>
+    </group_state>
+    <group_state name="right_arm_up" group="right_arm">
+        <joint name="joint_right_arm_1" value="0.7481"/>
+        <joint name="joint_right_arm_2" value="0"/>
+        <joint name="joint_right_arm_3" value="0"/>
+    </group_state>
+    <group_state name="gripp1_left" group="left_arm">
+        <joint name="joint_left_arm_1" value="-1.1274"/>
+        <joint name="joint_left_arm_2" value="0"/>
+        <joint name="joint_left_arm_3" value="0"/>
+    </group_state>
+    <group_state name="gripp1_right" group="right_arm">
+        <joint name="joint_right_arm_1" value="1.5068"/>
+        <joint name="joint_right_arm_2" value="0"/>
+        <joint name="joint_right_arm_3" value="0"/>
+    </group_state>
+    <group_state name="gripp2_left" group="left_arm">
+        <joint name="joint_left_arm_1" value="-1.1274"/>
+        <joint name="joint_left_arm_2" value="0.2213"/>
+        <joint name="joint_left_arm_3" value="0.8113"/>
+    </group_state>
+    <group_state name="gripp2_right" group="right_arm">
+        <joint name="joint_right_arm_1" value="1.5068"/>
+        <joint name="joint_right_arm_2" value="-0.137"/>
+        <joint name="joint_right_arm_3" value="-0.8113"/>
+    </group_state>
+    <group_state name="left_arm_rest" group="left_arm">
+        <joint name="joint_left_arm_1" value="0.2634"/>
+        <joint name="joint_left_arm_2" value="0.0105"/>
+        <joint name="joint_left_arm_3" value="0"/>
+    </group_state>
+    <group_state name="right_arm_rest" group="right_arm">
+        <joint name="joint_right_arm_1" value="0.1581"/>
+        <joint name="joint_right_arm_2" value="0.0948"/>
+        <joint name="joint_right_arm_3" value="-0.0105"/>
+    </group_state>
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="base_link" link2="link_left_arm_1" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="link_left_leg_1" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="link_right_arm_1" reason="Adjacent"/>
+    <disable_collisions link1="base_link" link2="link_right_leg_1" reason="Adjacent"/>
+    <disable_collisions link1="link_left_arm_1" link2="link_left_arm_2" reason="Adjacent"/>
+    <disable_collisions link1="link_left_arm_1" link2="link_left_arm_3" reason="Never"/>
+    <disable_collisions link1="link_left_arm_1" link2="link_left_leg_1" reason="Never"/>
+    <disable_collisions link1="link_left_arm_1" link2="link_left_leg_2" reason="Never"/>
+    <disable_collisions link1="link_left_arm_1" link2="link_right_arm_1" reason="Never"/>
+    <disable_collisions link1="link_left_arm_1" link2="link_right_arm_2" reason="Never"/>
+    <disable_collisions link1="link_left_arm_1" link2="link_right_leg_1" reason="Never"/>
+    <disable_collisions link1="link_left_arm_1" link2="link_right_leg_2" reason="Never"/>
+    <disable_collisions link1="link_left_arm_2" link2="link_left_arm_3" reason="Adjacent"/>
+    <disable_collisions link1="link_left_arm_2" link2="link_left_leg_1" reason="Never"/>
+    <disable_collisions link1="link_left_arm_2" link2="link_right_arm_1" reason="Never"/>
+    <disable_collisions link1="link_left_arm_2" link2="link_right_leg_1" reason="Never"/>
+    <disable_collisions link1="link_left_leg_1" link2="link_left_leg_2" reason="Adjacent"/>
+    <disable_collisions link1="link_left_leg_1" link2="link_left_leg_3" reason="Never"/>
+    <disable_collisions link1="link_left_leg_1" link2="link_left_leg_4" reason="Never"/>
+    <disable_collisions link1="link_left_leg_1" link2="link_right_arm_1" reason="Never"/>
+    <disable_collisions link1="link_left_leg_1" link2="link_right_arm_2" reason="Never"/>
+    <disable_collisions link1="link_left_leg_2" link2="link_left_leg_3" reason="Adjacent"/>
+    <disable_collisions link1="link_left_leg_2" link2="link_left_leg_4" reason="Never"/>
+    <disable_collisions link1="link_left_leg_2" link2="link_right_arm_1" reason="Never"/>
+    <disable_collisions link1="link_left_leg_3" link2="link_left_leg_4" reason="Adjacent"/>
+    <disable_collisions link1="link_right_arm_1" link2="link_right_arm_2" reason="Adjacent"/>
+    <disable_collisions link1="link_right_arm_1" link2="link_right_arm_3" reason="Never"/>
+    <disable_collisions link1="link_right_arm_1" link2="link_right_leg_1" reason="Never"/>
+    <disable_collisions link1="link_right_arm_1" link2="link_right_leg_2" reason="Never"/>
+    <disable_collisions link1="link_right_arm_2" link2="link_right_arm_3" reason="Adjacent"/>
+    <disable_collisions link1="link_right_arm_2" link2="link_right_leg_1" reason="Never"/>
+    <disable_collisions link1="link_right_leg_1" link2="link_right_leg_2" reason="Adjacent"/>
+    <disable_collisions link1="link_right_leg_1" link2="link_right_leg_3" reason="Never"/>
+    <disable_collisions link1="link_right_leg_1" link2="link_right_leg_4" reason="Never"/>
+    <disable_collisions link1="link_right_leg_2" link2="link_right_leg_3" reason="Adjacent"/>
+    <disable_collisions link1="link_right_leg_2" link2="link_right_leg_4" reason="Never"/>
+    <disable_collisions link1="link_right_leg_3" link2="link_right_leg_4" reason="Adjacent"/>
+</robot>
