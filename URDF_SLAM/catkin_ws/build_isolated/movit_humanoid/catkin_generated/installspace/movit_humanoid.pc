@@ -1,0 +1,8 @@
+prefix=/home/user/catkin_ws/install_isolated
+
+Name: movit_humanoid
+Description: Description of movit_humanoid
+Version: 0.3.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

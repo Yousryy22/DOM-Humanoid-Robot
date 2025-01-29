@@ -1,0 +1,30 @@
+#Instead of using TAB for indentation, use two spaces at the place of one TAB
+
+#Controller to control left leg
+left_leg_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints: [joint_left_leg_1, joint_left_leg_2, joint_left_leg_3, joint_left_leg_4]
+  
+#Controller to control right leg
+right_leg_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints: [joint_right_leg_1, joint_right_leg_2, joint_right_leg_3, joint_right_leg_4]
+
+#Controller to control left arm
+left_arm_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints: [joint_left_arm_1, joint_left_arm_2, joint_left_arm_3]
+
+#Controller to control right arm
+right_arm_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints: [joint_right_arm_1, joint_right_arm_2, joint_right_arm_3]
+  
+#Controller to continuously publish joint states/positions
+joint_state_controller:
+  type: "joint_state_controller/JointStateController"
+  publish_rate: 50
+
+joint_states:
+  base_world: 0.0  # Initial x-axis position
+

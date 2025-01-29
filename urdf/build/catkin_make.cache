@@ -1,2 +1,0 @@
-body_urdf_files:movit_humanoid:servo_motion
--DCATKIN_DEVEL_PREFIX=/home/user/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/user/catkin_ws/install -G Unix Makefiles

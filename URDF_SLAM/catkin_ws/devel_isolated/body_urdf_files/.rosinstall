@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/user/catkin_ws/devel_isolated/body_urdf_files/setup.sh

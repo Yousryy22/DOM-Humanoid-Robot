@@ -1,0 +1,8 @@
+prefix=/home/user/catkin_ws/devel_isolated/servo_motion
+
+Name: servo_motion
+Description: Description of servo_motion
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

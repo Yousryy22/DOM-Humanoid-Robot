@@ -1,0 +1,8 @@
+prefix=/home/user/catkin_ws/install_isolated
+
+Name: body_urdf_files
+Description: Description of body_urdf_files
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: geometry_msgs roscpp rospy std_msgs

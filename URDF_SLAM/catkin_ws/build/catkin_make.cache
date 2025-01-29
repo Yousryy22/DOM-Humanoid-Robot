@@ -1,0 +1,2 @@
+ORB_SLAM3/Thirdparty/Sophus:Pangolin:body_urdf_files:movit_humanoid:orb_slam3_ros_wrapper:servo_motion:webcam_publisher
+-DCATKIN_DEVEL_PREFIX=/home/user/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/user/catkin_ws/install -G Unix Makefiles

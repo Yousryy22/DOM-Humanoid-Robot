@@ -1,0 +1,8 @@
+prefix=/home/user/catkin_ws/install_isolated
+
+Name: webcam_publisher
+Description: Description of webcam_publisher
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
